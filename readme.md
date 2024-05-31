@@ -1,7 +1,9 @@
 # Luna Watch
 ### Pet sitting schedule assistant
 
-## TODO
+---
+
+### TODO
 - setup by owner
     - accept an input of days to span
     - define number of visits and time of day for each visit
