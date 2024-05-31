@@ -1,5 +1,5 @@
-### Luna Watch
-# Pet sitting schedule assistant
+# Luna Watch
+### Pet sitting schedule assistant
 
 ## TODO
 - setup by owner
