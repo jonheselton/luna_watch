@@ -1,6 +1,3 @@
 __pycache__/
-data/
-models/
-generated_images/
-huggingface_notebooks/
-logs/
+*/__pycache__
+.vscode/
