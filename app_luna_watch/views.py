@@ -14,8 +14,8 @@ def index(request):
     return render(request, 'app_luna_watch/index.html', context)
 
 def pets(request):
-    pet_list = PetSelection()
-    context = {'pet_list' : pet_list}
+    form = PetSelection()
+    context = {'form' : form}
     return render(request, 'app_luna_watch/index.html', context)
 
 def pet_details(request, pet):
@@ -23,12 +23,16 @@ def pet_details(request, pet):
     return render(request, "app_luna_watch/pet_detail.html", {'pet': pet})
 
 def add_pet(request):
-    if request.method == 'POST':
+    if request.POST.get('name', False):
         form = PetForm(request.POST)
         form.save()
-        return HttpResponseRedirect('/luna_watch/')
-    else:
+        return pet_details(request, request.POST.get('name'))
+#        return HttpResponseRedirect(reverse('luna_watch:pets'))
+    elif request.POST.get('selected_pet', False) == "99" or  request.method == 'GET':
         form = PetForm()
         context = {'form' : form}
         return render(request, 'app_luna_watch/add_pet.html', context)
+    else:
+        pet = get_object_or_404(Pet, id = int(request.POST['selected_pet']))
+        return pet_details(request, pet)
 

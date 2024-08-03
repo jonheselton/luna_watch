@@ -1,4 +1,4 @@
-import datetime
+from datetime import date
 
 from django.db import models
 from django.utils import timezone
@@ -17,14 +17,18 @@ class Visitor(models.Model):
         return self.visitor_name
 
 class Schedule(models.Model):
-    pet_name = models.ForeignKey(Pet, on_delete=models.CASCADE)
-    schedule_name = models.CharField(max_length=200)
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
     start_date = models.DateField('First day of the watch')
     end_date = models.DateField('Last day of the watch')
-
-    def __str__(self):
-        return self.pets_name
+    visits_per_day = models.IntegerField(name = 'visits_per_day', default = 3)
     
+    def n_days(self) -> int:
+        return (self.end_date - self.start_date).days + 1
+    
+    def __str__(self):
+        print_string = f"{self.start_date.strftime('%d %B')} to {self.end_date.strftime('%d %B %Y')}"
+        return print_string
+
 class Visit(models.Model):
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     visitor = models.ForeignKey(Visitor, on_delete=models.PROTECT)
@@ -35,3 +39,4 @@ class Visit(models.Model):
     def __str__(self):
         return f'{self.visit_date}, {self.visit_time}'
     
+

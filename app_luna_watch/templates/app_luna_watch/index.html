@@ -1,4 +1,5 @@
-<form action="/your-name/" method="post">
+<!doctype html>
+<form action="{% url 'luna_watch:add_pet' %}" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
