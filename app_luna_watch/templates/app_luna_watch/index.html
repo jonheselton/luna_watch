@@ -1,9 +1,6 @@
-{% if pet_list %}
-    <ul>
-    {% for pet in pet_list %}
-        <li><a href="{% url 'pet_details' pet.name %}">{{ pet.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No pets are available.</p>
-{% endif %}
+<!doctype html>
+<form action="{% url 'luna_watch:add_pet' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
