@@ -1,0 +1,5 @@
+<form method="post" action="{% url 'luna_watch:add_visitor' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>

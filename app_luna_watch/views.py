@@ -6,7 +6,7 @@ from django.views import generic
 from django.template import loader
 
 from .models import Schedule, Visit, Visitor, Pet
-from .forms import PetSelection, PetForm
+from .forms import PetSelection, PetForm, VisitorForm
 
 def index(request):
     form = PetSelection()
@@ -27,7 +27,6 @@ def add_pet(request):
         form = PetForm(request.POST)
         form.save()
         return pet_details(request, request.POST.get('name'))
-#        return HttpResponseRedirect(reverse('luna_watch:pets'))
     elif request.POST.get('selected_pet', False) == "99" or  request.method == 'GET':
         form = PetForm()
         context = {'form' : form}
@@ -36,3 +35,12 @@ def add_pet(request):
         pet = get_object_or_404(Pet, id = int(request.POST['selected_pet']))
         return pet_details(request, pet)
 
+def add_visitor(request):
+    if request.method == 'POST':
+        form = VisitorForm(request.POST)
+        form.save()
+        return HttpResponseRedirect(reverse('luna_watch:index'))
+    elif request.method == 'GET':
+        form = VisitorForm()
+        context = {'form' : form}
+        return render(request, 'app_luna_watch/add_visitor.html', context)
