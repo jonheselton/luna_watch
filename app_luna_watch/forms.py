@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pet
+from .models import Pet, Visitor
 
 def pet_choices():
     pets =  list(enumerate(Pet.objects.all(), start = 1))
@@ -14,3 +14,7 @@ class PetForm(forms.ModelForm):
         model = Pet
         fields = ['name']
 
+class VisitorForm(forms.ModelForm):
+    class Meta:
+        model = Visitor
+        fields = ['visitor_name', 'visitor_email']
