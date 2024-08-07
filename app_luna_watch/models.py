@@ -21,6 +21,8 @@ class Schedule(models.Model):
     start_date = models.DateField('First day of the watch')
     end_date = models.DateField('Last day of the watch')
     visits_per_day = models.IntegerField(name = 'visits_per_day', default = 3)
+    visit_times = models.CharField(name = 'visit_times', max_length = 64,
+        default = '07:00 AM, 12:00 PM, 5:00 PM')
     
     def n_days(self) -> int:
         return (self.end_date - self.start_date).days + 1
@@ -35,7 +37,7 @@ class Visit(models.Model):
     visit_date = models.DateField('Date of this visit')
     visit_time = models.TimeField('Time of the visit')
     needs_feeding = models.BooleanField('Serve food?', default = True)
-
+    scheduled = models.BooleanField('Visit Scheduled', default = False)
     def __str__(self):
         return f'{self.visit_date}, {self.visit_time}'
     
