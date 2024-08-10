@@ -1,4 +1,5 @@
 from django.db.models import F
+from django.forms import formset_factory
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -6,7 +7,10 @@ from django.views import generic
 from django.template import loader
 
 from .models import Schedule, Visit, Visitor, Pet
-from .forms import PetSelection, PetForm, VisitorForm, ScheduleForm
+from .forms import PetSelection, PetForm, VisitorForm, ScheduleForm, VisitForm
+
+def create_visits(schedule : Schedule) -> None:
+    pass
 
 def index(request):
     form = PetSelection()
@@ -56,4 +60,6 @@ def new_schedule(request):
         form = ScheduleForm()
         return render(request, 'app_luna_watch/new_schedule.html', { 'form' : form})
 
-
+def set_visits(request, schedule):
+    formset = formset_factory(VisitForm, extra = (schedule.n_days() * schedule.visits_per_day) - 1)
+    formset = formset(initial=[{'id': x.id} for x in some_objects])

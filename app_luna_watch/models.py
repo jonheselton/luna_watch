@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime, timedelta
 
 from django.db import models
 from django.utils import timezone
@@ -24,9 +24,16 @@ class Schedule(models.Model):
     visit_times = models.CharField(name = 'visit_times', max_length = 64,
         default = '07:00 AM, 12:00 PM, 5:00 PM')
     
-    def n_days(self) -> int:
-        return (self.end_date - self.start_date).days + 1
+    def visit_list(self) -> list:
+        visits = []
+        for i in range(self.n_days()):
+            visits += [datetime.strptime(f'{self.start_date} {x} +0500', '%Y-%m-%d %I:%M %p %z') + timedelta(days = i) for x in self.visit_times.split(', ')]
+        return visits
     
+    def n_days(self):
+        days = self.end_date - self.start_date
+        return days.days + 1
+
     def __str__(self):
         print_string = f"{self.start_date.strftime('%d %B')} to {self.end_date.strftime('%d %B %Y')}"
         return print_string
@@ -34,11 +41,10 @@ class Schedule(models.Model):
 class Visit(models.Model):
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     visitor = models.ForeignKey(Visitor, on_delete=models.PROTECT)
-    visit_date = models.DateField('Date of this visit')
-    visit_time = models.TimeField('Time of the visit')
+    visit_datetime = models.DateTimeField('Date and Time of the visit', null = True)
     needs_feeding = models.BooleanField('Serve food?', default = True)
-    scheduled = models.BooleanField('Visit Scheduled', default = False)
+    
     def __str__(self):
-        return f'{self.visit_date}, {self.visit_time}'
+        return f'{self.visit_datetime}'
     
 
