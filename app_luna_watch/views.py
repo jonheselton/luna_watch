@@ -55,6 +55,8 @@ def new_schedule(request):
     if request.method == 'POST':
         form = ScheduleForm(request.POST)
         schedule = form.save()
+        for i in schedule.visit_list():
+            Visit(schedule = schedule, visit_datetime = i).save()
         return HttpResponseRedirect(reverse('luna_watch:index'))
     else:
         form = ScheduleForm()
