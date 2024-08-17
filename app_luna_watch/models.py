@@ -40,8 +40,8 @@ class Schedule(models.Model):
 
 class Visit(models.Model):
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
-    visitor = models.ForeignKey(Visitor, on_delete=models.PROTECT)
-    visit_datetime = models.DateTimeField('Date and Time of the visit', null = True)
+    visitor = models.ForeignKey(Visitor, null = True, on_delete=models.SET_NULL)
+    visit_datetime = models.DateTimeField('Date and Time of the visit')
     needs_feeding = models.BooleanField('Serve food?', default = True)
     
     def __str__(self):
