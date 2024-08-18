@@ -6,3 +6,7 @@ scratch*
 scratch/
 */migrations/*
 .venv/
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/secrets.tfvars
+*tfstate*
