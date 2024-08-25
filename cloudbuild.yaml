@@ -1,0 +1,3 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:build_test1', '.' ]
