@@ -10,3 +10,4 @@ terraform/.terraform/
 terraform/.terraform.lock.hcl
 terraform/secrets.tfvars
 *tfstate*
+app_luna_watch/migrations
