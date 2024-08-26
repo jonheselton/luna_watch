@@ -3,10 +3,10 @@ steps:
   args: [
         'build',
         '-t',
-        'gencan-luna-wattch/luna_watch:$SHORT_SHA',
+        '$PROJECT_ID/gencan-luna-wattch/luna_watch:$SHORT_SHA',
         '.'
         ]
-# images: 
-#   - 'gcr.io/$PROJECT_ID/gencan-luna-wattch/luna_watch:$SHORT_SHA'
+images: 
+  - '$PROJECT_ID/gencan-luna-wattch/luna_watch:$SHORT_SHA'
 options:
   logging: 'CLOUD_LOGGING_ONLY'
