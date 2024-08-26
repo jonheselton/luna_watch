@@ -1,8 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:$SHORT_SHA', 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:latest', '.' ]
+  args: [ 'build', '-t', 'gencan-luna-watch/luna_watch', '.' ]
 images: 
-  - 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch::$SHORT_SHA'
-  - 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch::latest'
+  - 'gencan-luna-watch/luna_watch:$SHORT_SHA'
+  - 'gencan-luna-watch/luna_watch::latest'
 options:
   logging: 'CLOUD_LOGGING_ONLY'
