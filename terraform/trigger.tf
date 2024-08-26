@@ -13,7 +13,6 @@ resource "google_cloudbuild_trigger" "repo-trigger" {
       branch = "main"
     }
   }
-  include_build_logs = "CLOUD_LOGGING_ONLY"
   filename = "cloudbuild.yaml"
   service_account = "projects/affable-berm-432217-i2/serviceAccounts/478491545012-compute@developer.gserviceaccount.com"
 }
