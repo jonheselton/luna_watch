@@ -3,6 +3,6 @@ steps:
   args: [ 'build', '-t', 'gencan-luna-watch/luna_watch', '.' ]
 images: 
   - 'gencan-luna-watch/luna_watch:$SHORT_SHA'
-  - 'gencan-luna-watch/luna_watch::latest'
+  - 'gencan-luna-watch/luna_watch:latest'
 options:
   logging: 'CLOUD_LOGGING_ONLY'
