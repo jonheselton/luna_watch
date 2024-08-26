@@ -7,6 +7,6 @@ steps:
         '.'
         ]
 images: 
-  - 'us-central1.docker.pkg.dev/$PROJECT_ID//gencan-luna-wattch/luna_watch:$SHORT_SHA'
+  - 'us-central1.docker.pkg.dev/$PROJECT_ID/gencan-luna-wattch/luna_watch:$SHORT_SHA'
 options:
   logging: 'CLOUD_LOGGING_ONLY'
