@@ -17,3 +17,4 @@ resource "google_cloudbuild_trigger" "repo-trigger" {
   filename = "cloudbuild.yaml"
   service_account = "projects/affable-berm-432217-i2/serviceAccounts/478491545012-compute@developer.gserviceaccount.com"
 }
+
