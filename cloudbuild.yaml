@@ -1,7 +1,12 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-wattch/luna_watch:$SHORT_SHA', '.' ]
+  args: [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/gencan-luna-wattch/luna_watch:$SHORT_SHA',
+        '.'
+        ]
 images: 
-  - 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/gencan-luna-wattch/luna_watch:$SHORT_SHA'
 options:
   logging: 'CLOUD_LOGGING_ONLY'
