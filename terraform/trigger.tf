@@ -15,19 +15,5 @@ resource "google_cloudbuild_trigger" "repo-trigger" {
   }
   include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
   filename = "cloudbuild.yaml"
-  service_account = "113479310004597445170"
+  service_account = "projects/affable-berm-432217-i2/serviceAccounts/478491545012-compute@developer.gserviceaccount.com"
 }
-# resource "google_cloudbuild_trigger" "luna-watch-trigger" {
-#     name     = "luna-watch-build-on-pr"
-#     filename = "cloudbuild.yaml"
-
-#     github {
-#             owner = "jonheselton"
-#             name  = "luna_watch"
-#             pull_request {
-#                 branch = "^main$"
-#             }
-#     }
-
-#     include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
-# }
