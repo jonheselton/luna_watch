@@ -10,4 +10,3 @@ images:
   - 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:$SHORT_SHA'
 options:
   logging: 'CLOUD_LOGGING_ONLY'
-
