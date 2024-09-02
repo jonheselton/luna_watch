@@ -3,10 +3,13 @@ steps:
   args: [
         'build',
         '-t',
-        'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:$SHORT_SHA',
+        'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:latest',
+        '-t',
+        'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:$_PR_NUMBER',
         '.'
         ]
 images: 
-  - 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:$SHORT_SHA'
+  - 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:latest'
+  - 'us-central1-docker.pkg.dev/affable-berm-432217-i2/gencan-luna-watch/luna_watch:$_PR_NUMBER'
 options:
   logging: 'CLOUD_LOGGING_ONLY'
