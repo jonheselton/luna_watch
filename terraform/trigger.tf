@@ -17,5 +17,6 @@ resource "google_cloudbuild_trigger" "repo-trigger" {
   include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
   filename           = "cloudbuild.yaml"
   service_account    = "projects/affable-berm-432217-i2/serviceAccounts/478491545012-compute@developer.gserviceaccount.com"
+  # Comment
 }
 
