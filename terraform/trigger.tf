@@ -10,7 +10,7 @@ resource "google_cloudbuild_trigger" "repo-trigger" {
   repository_event_config {
     repository = google_cloudbuildv2_repository.repo_luna_watch.id
     pull_request {
-      branch = "main"
+      branch          = "main"
       comment_control = "COMMENTS_ENABLED"
     }
   }
