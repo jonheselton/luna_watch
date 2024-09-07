@@ -14,6 +14,6 @@ resource "google_sql_database_instance" "luna_watch_db_instance" {
       private_network                               = google_compute_network.gencan.self_link
       enable_private_path_for_google_cloud_services = true
     }
-  deletion_protection_enabled = "false"
+    deletion_protection_enabled = "false"
   }
 }
